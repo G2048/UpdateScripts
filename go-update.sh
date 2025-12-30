@@ -9,3 +9,5 @@ go install github.com/jesseduffield/lazygit@latest
 go install -v github.com/ogen-go/ogen/cmd/ogen@latest
 go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
 go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+
+sudo curl -L https://github.com/bcicen/ctop/releases/download/v0.7.7/ctop-0.7.7-linux-amd64 -o /usr/local/bin/ctop ; sudo chmod +x /usr/local/bin/ctop
