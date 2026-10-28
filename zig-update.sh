@@ -34,4 +34,5 @@ mkdir -p /usr/lib/zig
 # ln -fs /usr/lib/zig/zig /usr/bin/zig
 # rm $TAR_NAME
 
+ln -fs /usr/lib/zig/zig /usr/bin/zig
 echo "Installed new version of zig: $(zig version)"
