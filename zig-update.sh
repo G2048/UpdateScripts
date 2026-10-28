@@ -18,6 +18,12 @@ TAR_NAME="${FOLDER_NAME}.tar.xz"
 STR_JQ=".\"${REPO_VERSION}\"".'"x86_64-linux".tarball'
 
 ZIG_JSON=$(curl -s https://ziglang.org/download/index.json)
+if [[ "$1" =~ "version" ]]; then
+  echo "Avalible Versions:"
+  echo $ZIG_JSON | jq '.[]."x86_64-linux"."tarball"' 
+  exit 0
+fi
+
 ZIG_URL_NEW_VERSION=$(echo $ZIG_JSON | jq -r $STR_JQ)
 echo "ZIG_URL_NEW_VERSION=$ZIG_URL_NEW_VERSION"
 
