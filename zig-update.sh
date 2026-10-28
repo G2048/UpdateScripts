@@ -12,7 +12,7 @@ echo
 # echo "REPO_TAR_URL=$REPO_TAR_URL"
 
 # Временное решение
-REPO_VERSION="master"
+REPO_VERSION=${1:-"master"}
 FOLDER_NAME="zig-x86_64-linux-${REPO_VERSION}"
 TAR_NAME="${FOLDER_NAME}.tar.xz"
 STR_JQ=".\"${REPO_VERSION}\"".'"x86_64-linux".tarball'
