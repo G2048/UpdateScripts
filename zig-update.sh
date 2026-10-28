@@ -24,15 +24,18 @@ echo "ZIG_URL_NEW_VERSION=$ZIG_URL_NEW_VERSION"
 echo "Download..."
 curl -L $ZIG_URL_NEW_VERSION --output $TAR_NAME
 echo "Unpacking ${TAR_NAME}"
-tar -xvf $TAR_NAME
+tar -xf $TAR_NAME
 
 TAR_FOLDER_NAME=$(tar --list --file $TAR_NAME | head -n 1)
 echo
 echo "Moving ${TAR_FOLDER_NAME} to /usr/lib/zig"
 mkdir -p /usr/lib/zig
-# mv $TAR_FOLDER_NAME/* /usr/lib/zig
-# ln -fs /usr/lib/zig/zig /usr/bin/zig
-# rm $TAR_NAME
+if [[ -d "/usr/lib/zig" ]] ; then
+  mv /usr/lib/zig "/usr/lib/zig_${CURRENT_VERSION%%-*}"
+fi
+mkdir /usr/lib/zig
+mv "${TAR_FOLDER_NAME}"/* /usr/lib/zig
+rm $TAR_NAME
 
 ln -fs /usr/lib/zig/zig /usr/bin/zig
 echo "Installed new version of zig: $(zig version)"
